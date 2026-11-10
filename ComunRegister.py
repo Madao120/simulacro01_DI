@@ -64,11 +64,11 @@ class FiestraPrincipal(QMainWindow):
         widget_resumen.setLayout(layout_resumen)
 
         # QStackedLayout con las dos páginas
-        self.paginas = QStackedLayout()
-        self.paginas.addWidget(widget_comun)
-        self.paginas.addWidget(widget_resumen)
+        self.stack = QStackedLayout()
+        self.stack.addWidget(widget_comun)
+        self.stack.addWidget(widget_resumen)
 
-        layout_principal.addLayout(self.paginas, 1, 0, 1, 2)
+        layout_principal.addLayout(self.stack, 1, 0, 1, 2)
 
         self.enviar = QPushButton("Enviar")
         self.enviar.clicked.connect(self.mostrar_resumen)
@@ -109,12 +109,12 @@ class FiestraPrincipal(QMainWindow):
             f"{self.etapas_evolutivas.currentText()}"
         )
 
-        self.paginas.setCurrentIndex(1)
+        self.stack.setCurrentIndex(1)
         self.enviar.setVisible(False)
         self.volver.setVisible(True)
 
     def mostrar_formulario(self):
-        self.paginas.setCurrentIndex(0)
+        self.stack.setCurrentIndex(0)
         self.enviar.setVisible(True)
         self.volver.setVisible(False)
 
